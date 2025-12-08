@@ -109,13 +109,11 @@ npm install
 This will install all required packages listed in `package.json`.
 
 ### Step 3: Set Up Environment Variables
-```bash
-# Copy the example file
-cp .env.example .env
 
-# Edit .env with your API keys
-# (See Environment Setup section below)
-```
+
+**📧 Contact the development team to get the required API keys and configuration values.**
+
+> **Security Note:** Never commit `.env` to version control!
 
 ### Step 4: Start Development Server
 ```bash
@@ -235,7 +233,7 @@ Centralized configuration:
         │              ▼               ▼
         │         ┌────────────────────────┐
         │         │   FED Backend API      │
-        │         │ api.fedkiit.com        │
+        │         │ [Backend API URL]      │
         │         └────────────────────────┘
         │
         ▼
@@ -285,7 +283,7 @@ Check cache: Is data < 2 minutes old?
          ↓
 Call teamAPI.fetchTeam()
          ↓
-HTTP GET to: https://api.fedkiit.com/api/user/fetchTeam
+HTTP GET to: [Backend API]/api/user/fetchTeam
          ↓
 Response: { success: true, data: [...team members] }
          ↓
@@ -306,7 +304,7 @@ Check cache: Is data < 2 minutes old?
    YES → Return cached data ✅
    NO  → Continue ↓
          ↓
-HTTP GET to: https://api.fedkiit.com/api/form/getAllForms
+HTTP GET to: [Backend API]/api/form/getAllForms
          ↓
 Response: { success: true, events: [...] }
          ↓
@@ -407,7 +405,7 @@ User sees: "The current president of FED is John Doe.
 ## 🌐 APIs Used
 
 ### 1. **FED Backend API** (Team Data)
-**Endpoint:** `GET https://api.fedkiit.com/api/user/fetchTeam`
+**Endpoint:** `GET [Backend API]/api/user/fetchTeam`
 
 **Response Structure:**
 ```json
@@ -437,7 +435,7 @@ User sees: "The current president of FED is John Doe.
 ---
 
 ### 2. **FED Backend API** (Events Data)
-**Endpoint:** `GET https://api.fedkiit.com/api/form/getAllForms`
+**Endpoint:** `GET [Backend API]/api/form/getAllForms`
 
 **Response Structure:**
 ```json
