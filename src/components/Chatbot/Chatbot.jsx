@@ -11,7 +11,7 @@ const Chatbot = () => {
     const [messages, setMessages] = useState([
         {
             id: 1,
-            text: `Hello! I'm ${chatbotName}, your AI assistant for FED. I can help you with information about our team, events, and more. How can I assist you today?`,
+            text: `Hello! I'm **${chatbotName}**, your personal assistant for FED KIIT. 🚀\n\nAsk me about our team, upcoming events, or how to join the society!`,
             isUser: false,
             timestamp: new Date(),
         }
@@ -26,8 +26,8 @@ const Chatbot = () => {
 
     // Suggested prompts
     const suggestedPrompts = [
+        "What is FED?",
         "Who is the president?",
-        "List all team members",
         "Tell me about FED events",
         "How can I join FED?"
     ];
@@ -227,7 +227,16 @@ const Chatbot = () => {
                                         className={`${styles.message} ${message.isUser ? styles.userMessage : styles.botMessage
                                             }`}
                                     >
-                                        {message.text}
+                                        <div
+                                            dangerouslySetInnerHTML={{
+                                                __html: message.text
+                                                    .replace(/@fedkiit/gi, '[@fedkiit](https://www.instagram.com/fedkiit/)')
+                                                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                                                    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline; font-weight: 600;">$1</a>')
+                                                    .replace(/(?<!href=")(https?:\/\/[^\s<"]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline; font-weight: 600;">$1</a>')
+                                                    .replace(/\n/g, '<br/>')
+                                            }}
+                                        />
                                     </div>
                                 </div>
                             </div>
